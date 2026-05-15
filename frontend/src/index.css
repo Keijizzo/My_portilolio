@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+[data-theme="dark"] {
+  --page-bg: #030712;
+  --text-primary: #fafafa;
+  --text-muted: #a1a1aa;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(3, 7, 18, 0.9);
+  --input-bg: rgba(9, 9, 11, 0.8);
+  --section-glow: rgba(16, 185, 129, 0.12);
+}
+
+[data-theme="light"] {
+  --page-bg: #f8fafc;
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(15, 23, 42, 0.1);
+  --nav-bg: rgba(248, 250, 252, 0.95);
+  --input-bg: #ffffff;
+  --section-glow: rgba(16, 185, 129, 0.08);
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  @apply font-sans antialiased transition-colors duration-300;
+}
+
+::selection {
+  background-color: rgba(16, 185, 129, 0.4);
+  color: white;
+}
+
+@layer components {
+  .text-theme {
+    color: var(--text-primary);
+  }
+
+  .text-theme-muted {
+    color: var(--text-muted);
+  }
+
+  .bg-theme-page {
+    background-color: var(--page-bg);
+  }
+
+  .bg-theme-nav {
+    background-color: var(--nav-bg);
+  }
+
+  .glass-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    @apply shadow-xl backdrop-blur-xl;
+  }
+
+  .glass-panel-strong {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    @apply shadow-2xl backdrop-blur-2xl;
+  }
+
+  [data-theme="dark"] .glass-panel-strong {
+    border-color: rgba(16, 185, 129, 0.2);
+  }
+
+  [data-theme="light"] .glass-panel-strong {
+    border-color: rgba(16, 185, 129, 0.35);
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent;
+  }
+
+  [data-theme="dark"] .gradient-text {
+    @apply from-emerald-300 via-teal-200 to-cyan-300;
+  }
+
+  .gradient-border {
+    border: 1px solid transparent;
+    border-radius: 1.5rem;
+    background:
+      linear-gradient(var(--page-bg), var(--page-bg)) padding-box,
+      linear-gradient(135deg, #10b981, #06b6d4, #8b5cf6) border-box;
+  }
+
+  .btn-glow {
+    @apply relative overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-3 font-semibold text-zinc-950 transition-all duration-300;
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.35);
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 45px rgba(16, 185, 129, 0.55);
+  }
+
+  .btn-outline-glow {
+    @apply rounded-xl border border-emerald-500/40 bg-emerald-500/5 px-6 py-3 font-semibold text-emerald-600 transition-all duration-300;
+  }
+
+  [data-theme="dark"] .btn-outline-glow {
+    @apply text-emerald-300;
+  }
+
+  .btn-outline-glow:hover {
+    @apply border-emerald-400 bg-emerald-500/15;
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.25);
+  }
+
+  [data-theme="light"] .btn-outline-glow:hover {
+    @apply text-emerald-800;
+  }
+
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-glow {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      var(--section-glow),
+      transparent
+    );
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  [data-theme="light"] .grid-bg {
+    background-image:
+      linear-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+  }
+
+  .input-glow {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--card-border);
+  }
+
+  .input-glow:focus {
+    @apply border-emerald-500 outline-none;
+    box-shadow:
+      0 0 0 3px rgba(16, 185, 129, 0.2),
+      0 0 20px rgba(16, 185, 129, 0.15);
+  }
+
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+  }
+
+  .skill-card-active {
+    @apply border-emerald-400/50 bg-emerald-500/10 shadow-lg shadow-emerald-500/20;
+  }
+
+  .orb {
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .toggle-btn {
+    @apply rounded-lg border px-2 py-1.5 text-xs font-medium transition;
+    border-color: var(--card-border);
+    color: var(--text-muted);
+  }
+
+  .toggle-btn-active {
+    @apply border-emerald-500 bg-emerald-500/20 text-emerald-600;
+  }
+
+  [data-theme="dark"] .toggle-btn-active {
+    @apply text-emerald-300;
+  }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
