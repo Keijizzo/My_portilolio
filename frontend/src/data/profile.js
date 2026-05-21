@@ -1,9 +1,9 @@
 export const PROFILE = {
   name: "Hamis Kamugisha",
   title: "Data Scientist",
-  email: "khamiskamugisha@gmail.com",
-  phone: "0787667566",
-  phoneDisplay: "+255 787 667 566",
+  email: "hkamu2100@gmail.com",
+  phone: "0712212222",
+  phoneDisplay: "+255 712212222",
   location: "Tanzania",
   school: "Eastern Africa Statistical Training Centre (EASTC)",
   schoolShort: "EASTC",
